@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  application:
+    image: mvlabs/java-es-cqrs-workshop
+    container_name: java-escqrs-workshop-application
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      - POSTGRES_HOST=jdbc:postgresql://postgres:5432/mvlabs
+      - POSTGRES_PASSWORD=mvlabs
+      - POSTGRES_USER=mvlabs
+    networks:
+      - base
+
+  postgres:
+    image: postgres:alpine
+    container_name: java-escqrs-workshop-postgres
+    environment:
+      - POSTGRES_USER=mvlabs
+      - POSTGRES_PASSWORD=mvlabs
+      - POSTGRES_DB=mvlabs
+    ports:
+      - 5432:5432
+    networks:
+      - base
+ 
+  pgadmin:
+    image: fenglc/pgadmin4:1.4
+    container_name: java-escqrs-workshop-pgadmin4
+    ports:
+      - 5050:5050
+    networks:
+      - base
+
+networks:
+  base:

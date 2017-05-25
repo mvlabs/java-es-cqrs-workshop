@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.JsonArray;
 
 import it.mvlabs.cqrs.commands.AddOrderCommand;
-import it.mvlabs.cqrs.commands.CompleteOrderCommand;
 import it.mvlabs.cqrs.commands.CreatePizzeriaCommand;
 import it.mvlabs.cqrs.query.PizzeriaEntry;
 import it.mvlabs.cqrs.query.PizzeriaRepository;
@@ -79,13 +78,6 @@ public class CQRSController {
             @RequestParam(value="pizza") String pizzaTaste,
             @RequestParam(value="customer") String customer) {
         
-        CompleteOrderCommand command = 
-                new CompleteOrderCommand(
-                        customer, 
-                        pizzeriaId, 
-                        pizzaTaste, 
-                        new Long(at));
-        commandGateway.send(command);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<String>("Add Complete Order end point here!", HttpStatus.ACCEPTED);
     }  
 }

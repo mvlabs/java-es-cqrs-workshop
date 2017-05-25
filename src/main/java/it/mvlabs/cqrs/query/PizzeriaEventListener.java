@@ -43,6 +43,4 @@ public class PizzeriaEventListener {
         pizzeria.setPizzas(JSONUtility.serializeOrders(orders));
         repository.save(pizzeria);
     }
-
-    //TODO add OrderCompletedEvent projection handler here
 }

@@ -1,14 +1,11 @@
 package it.mvlabs.cqrs.events;
 
-import java.util.Date;
-
 public class OrderCompletedEvent {
 
     private final String pizzeriaId;
     private final String customerName;
     private final String pizzaTaste; 
     private final long at;
-    
     
     public OrderCompletedEvent(
             String pizzeriaId, 

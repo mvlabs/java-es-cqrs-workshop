@@ -3,8 +3,6 @@ package it.mvlabs.cqrs.query;
 import java.util.List;
 
 import org.axonframework.eventhandling.EventHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +15,6 @@ import it.mvlabs.hibernate.JSONUtility;
 @Component
 public class PizzeriaEventListener {
     
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     private PizzeriaRepository repository;
 
     @Autowired

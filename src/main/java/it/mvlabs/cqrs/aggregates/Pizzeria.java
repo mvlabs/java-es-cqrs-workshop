@@ -1,17 +1,11 @@
 package it.mvlabs.cqrs.aggregates;
 
-import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
-import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.spring.stereotype.Aggregate;
 
-import it.mvlabs.cqrs.commands.CreatePizzeriaCommand;
-import it.mvlabs.cqrs.events.PizzeriaCreatedEvent;
 import it.mvlabs.cqrs.values.Order;
 
 @Aggregate
@@ -26,17 +20,28 @@ public class Pizzeria {
     @SuppressWarnings("unused")
     private Pizzeria() {
     }
+    
+    //TODO implement both the command handler and event sourcing handler here
+    /*
+     * HINT
+     * 1) see org.axonframework.commandhandling.model.AggregateLifecycle.apply for business logic application.
+     * 2) see org.axonframework.commandhandling.CommandHandler for command handling
+     * 3) see org.axonframework.eventsourcing.EventSourcing for event sourcing
+     */
 
-    @CommandHandler
-    public Pizzeria(CreatePizzeriaCommand command) {
-        apply(new PizzeriaCreatedEvent(
-                command.getPizzeriaId(), 
-                command.getName()));
-    }
-
-    @EventSourcingHandler
-    public void on(PizzeriaCreatedEvent event) {
-        this.id = event.getPizzeriaId();
-        this.name = event.getName();
-    }
+    //FOR EXAMPLE:
+    
+    /**
+     * @CommandHandler
+     * public Pizzeria(Command command) {
+     *  apply(new Event( ... ));
+     * }
+     * 
+     * @EventSourcingHandler
+     *   public void on(Event event) {
+     *   this.id = event.getId();
+     *   this.name = event.getName();
+     *   ...
+     * }
+     */
 }

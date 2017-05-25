@@ -1,7 +1,6 @@
 package it.mvlabs.cqrs.web;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonArray;
 
-import it.mvlabs.cqrs.commands.CreatePizzeriaCommand;
 import it.mvlabs.cqrs.query.PizzeriaEntry;
 import it.mvlabs.cqrs.query.PizzeriaRepository;
 import it.mvlabs.hibernate.JSONUtility;
@@ -50,11 +48,9 @@ public class CQRSController {
     @RequestMapping("/create-pizzeria")
     public ResponseEntity createPizzeria(
             @RequestParam(value="name") String name) {
-        String id = UUID.randomUUID().toString();
-        CreatePizzeriaCommand command = 
-                new CreatePizzeriaCommand(id, name);
-        commandGateway.send(command);
-        return new ResponseEntity<String>("Pizzeria created, see Postgres for event sourcing persistence.", HttpStatus.ACCEPTED);
+       //TODO here you have to send a command instance
+      //HINT, see org.axonframework.commandhandling.gateway.CommandGateway
+        return new ResponseEntity<String>("Implement Create Pizzeria End point!", HttpStatus.ACCEPTED);
     }  
     
     @SuppressWarnings("rawtypes")
@@ -63,7 +59,7 @@ public class CQRSController {
             @RequestParam(value="pizzeriaId") String pizzeriaId,
             @RequestParam(value="pizzaTaste") String pizzaTaste,
             @RequestParam(value="customerName") String customerName) {
-        
+       //TODO to be implemented later in the workshop 
         return new ResponseEntity<String>("Introduce Add Order end point here!", HttpStatus.ACCEPTED);
     }
     
@@ -74,7 +70,7 @@ public class CQRSController {
             @RequestParam(value="pizzeria") String pizzeriaId,
             @RequestParam(value="pizza") String pizzaTaste,
             @RequestParam(value="customer") String customer) {
-        
+        //TODO to be implemented later in the workshop.
         return new ResponseEntity<String>("Add Complete Order end point here!", HttpStatus.ACCEPTED);
     }  
 }

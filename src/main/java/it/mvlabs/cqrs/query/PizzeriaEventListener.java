@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.mvlabs.cqrs.events.OrderAddedEvent;
-import it.mvlabs.cqrs.events.OrderCompletedEvent;
 import it.mvlabs.cqrs.events.PizzeriaCreatedEvent;
 import it.mvlabs.hibernate.JSONBOrder;
 import it.mvlabs.hibernate.JSONUtility;
@@ -45,17 +44,5 @@ public class PizzeriaEventListener {
         repository.save(pizzeria);
     }
 
-    @EventHandler
-    public void on(OrderCompletedEvent event) {
-        PizzeriaEntry pizzeria = repository.findOne(event.getPizzeriaId());
-        List<JSONBOrder> orders = JSONUtility.ordersFromJsonArray(pizzeria.getPizzas());
-       
-        orders.removeIf(order -> 
-        order.getCustomer().equals(event.getCustomerName()) &&
-        order.getAt() == event.getAt() &&
-        order.getPizza().equals(event.getPizzaTaste()));
-        
-        pizzeria.setPizzas(JSONUtility.serializeOrders(orders));
-        repository.save(pizzeria);
-    }
+    //TODO add OrderCompletedEvent projection handler here
 }

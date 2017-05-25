@@ -10,9 +10,7 @@ import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.spring.stereotype.Aggregate;
 
-import it.mvlabs.cqrs.commands.AddOrderCommand;
 import it.mvlabs.cqrs.commands.CreatePizzeriaCommand;
-import it.mvlabs.cqrs.events.OrderAddedEvent;
 import it.mvlabs.cqrs.events.PizzeriaCreatedEvent;
 import it.mvlabs.cqrs.values.Order;
 
@@ -36,16 +34,9 @@ public class Pizzeria {
                 command.getName()));
     }
 
-    @CommandHandler
-    public void addOrder(AddOrderCommand command) {
-        apply(new OrderAddedEvent(
-                id, 
-                command.getCustomerName(), 
-                command.getPizzaTaste(),
-                System.currentTimeMillis()));
-    }
+   
 
-    //TODO add Complete Order Command Handler
+    //TODO add Add Order Command Handler
     
 
     @EventSourcingHandler
@@ -54,13 +45,5 @@ public class Pizzeria {
         this.name = event.getName();
     }
 
-    @EventSourcingHandler
-    public void on(OrderAddedEvent event) {
-        pizzas.add(new Order(
-                event.getAt(),
-                event.getCustomerName(),
-                event.getPizzaTaste()));
-    }
-
-    //TODO add Order Completed Event Sourcing Handler
+    //TODO add Order Added Event Sourcing Handler
 }

@@ -22,9 +22,5 @@ public class PizzeriaEventListener {
                 event.getPizzeriaId(), 
                 event.getName(),
                 "[]"));
-    }
-
-  //TODO add reading projection here for order added event
-
-   
+    }  
 }

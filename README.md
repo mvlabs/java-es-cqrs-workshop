@@ -10,7 +10,7 @@ Source code for es/cqrs workshop built as **Spring Boot** web service.
 
 ## How to run the WS
 
-* `mvn clean install -DskipTests`
+* `mvn clean install`
 * `mvn docker:build`
 * `docker-compose up postgres` (this will create and initialize the db container, you can stop the container after it has been initialized)
 * `docker-compose up`

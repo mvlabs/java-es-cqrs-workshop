@@ -77,6 +77,5 @@ public class Pizzeria {
                 order.getAt() == event.getAt() &&
                 order.getCustomer().equals(event.getCustomerName()) &&
                 order.getPizza().equals(event.getPizzaTaste()));
-
     }
 }

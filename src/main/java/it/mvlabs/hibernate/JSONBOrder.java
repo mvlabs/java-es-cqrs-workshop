@@ -36,7 +36,4 @@ public class JSONBOrder {
     public String toString() {
         return "JSONBOrder [at=" + at + ", customer=" + customer + ", pizza=" + pizza + "]";
     }
-    
-    
-    
 }

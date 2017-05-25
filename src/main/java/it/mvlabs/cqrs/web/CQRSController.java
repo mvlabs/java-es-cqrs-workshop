@@ -54,7 +54,7 @@ public class CQRSController {
         CreatePizzeriaCommand command = 
                 new CreatePizzeriaCommand(id, name);
         commandGateway.send(command);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<String>("Pizzeria created, see Postgres for event sourcing persistence.", HttpStatus.ACCEPTED);
     }  
     
     @SuppressWarnings("rawtypes")

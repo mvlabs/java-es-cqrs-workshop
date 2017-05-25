@@ -34,16 +34,9 @@ public class Pizzeria {
                 command.getName()));
     }
 
-   
-
-    //TODO add Add Order Command Handler
-    
-
     @EventSourcingHandler
     public void on(PizzeriaCreatedEvent event) {
         this.id = event.getPizzeriaId();
         this.name = event.getName();
     }
-
-    //TODO add Order Added Event Sourcing Handler
 }
